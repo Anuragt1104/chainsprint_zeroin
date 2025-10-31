@@ -1,0 +1,23 @@
+# Supabase migrations (handled separately)
+supabase/
+
+# Documentation files
+docs/
+*.md
+!README.md
+
+# Local development files
+.env.local
+.env*.local
+
+# Development artifacts
+.vscode/
+.idea/
+*.log
+
+# Test files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+

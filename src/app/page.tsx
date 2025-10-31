@@ -5,13 +5,17 @@ import { SocialProof } from "@/components/SocialProof";
 import { SprintDashboard } from "@/components/SprintDashboard";
 import { ValuePillars } from "@/components/ValuePillars";
 import { Roadmap } from "@/components/Roadmap";
+import { getCrewDashboardData } from "@/lib/crew";
+import { DEFAULT_CREW_SLUG } from "@/lib/config";
 
-export default function Home() {
+export default async function Home() {
+  const crewData = await getCrewDashboardData(DEFAULT_CREW_SLUG);
+
   return (
     <main className="mx-auto flex min-h-screen max-w-6xl flex-col gap-16 px-6 py-16 sm:px-10">
       <Hero />
       <ValuePillars />
-      <SprintDashboard />
+      <SprintDashboard data={crewData} />
       <Credibility />
       <SocialProof />
       <Roadmap />

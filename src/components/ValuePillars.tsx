@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const pillars = [
   {
     title: "Motivate crews",
@@ -16,18 +20,50 @@ const pillars = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
+
 export function ValuePillars() {
   return (
-    <section className="grid gap-5 sm:grid-cols-3">
-      {pillars.map((pillar) => (
-        <article
+    <motion.section
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-100px" }}
+      className="grid gap-5 sm:grid-cols-3"
+    >
+      {pillars.map((pillar, index) => (
+        <motion.article
           key={pillar.title}
-          className="rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-lg transition hover:-translate-y-1 hover:border-indigo-400/60 hover:shadow-indigo-500/20"
+          variants={item}
+          whileHover={{ 
+            y: -8, 
+            scale: 1.02,
+            transition: { duration: 0.2 }
+          }}
+          className="group rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:border-indigo-400/60 hover:shadow-xl hover:shadow-indigo-500/20"
         >
-          <h3 className="text-xl font-semibold text-white">{pillar.title}</h3>
+          <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/20 to-sky-500/20 text-lg font-bold text-indigo-300 backdrop-blur-sm transition-all duration-300 group-hover:from-indigo-500/30 group-hover:to-sky-500/30 group-hover:scale-110">
+            {index + 1}
+          </div>
+          <h3 className="text-xl font-semibold text-white transition-colors group-hover:text-indigo-300">
+            {pillar.title}
+          </h3>
           <p className="mt-3 text-sm text-slate-300">{pillar.description}</p>
-        </article>
+        </motion.article>
       ))}
-    </section>
+    </motion.section>
   );
 }

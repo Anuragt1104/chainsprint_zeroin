@@ -91,7 +91,7 @@ export const ZerionClient = {
 
   async getTransactions(address: string): Promise<TransactionItem[]> {
     const data = await zerionFetch<{
-      data: Array<{ id: string; attributes: TransactionItem }>;
+      data: Array<{ id: string; attributes: Omit<TransactionItem, "id"> }>;
     }>({
       path: `/wallets/${address}/transactions`,
       searchParams: { sort: "-mined_at", ["page[size]"]: 20 },
