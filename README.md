@@ -2,8 +2,7 @@
 
 > Turn every onchain move into a crew sprint that people actually show up for.
 
-Built for the [Zerion Cypherpunk Hackathon](https://zerion.io) by Alenka Media.
-
+Built for the [Zerion Cypherpunk Hackathon](https://zerion.io) 
 ---
 
 ## The Problem
